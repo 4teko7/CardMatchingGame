@@ -12,7 +12,6 @@ public:
     TopLayout();
     score *scoreOfPLayer;
     MyTimer mt;
-    MyGrid *gl;
     QPushButton *newGame;
     QPushButton *quit;
 };

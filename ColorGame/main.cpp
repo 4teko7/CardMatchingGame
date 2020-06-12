@@ -19,12 +19,10 @@ int main(int argc, char* argv[]){
     MyTimer mt;
     TopLayout *topLayout = new TopLayout();
 
-//    MyGrid *gl = new MyGrid(mt.timer);
-//    score *score = new class score();
+    MyGrid *gl = new MyGrid(mt.timer);
 
     QString textOfButtons[] = {"cat","dog","apple","orange","laptop","lion","monkey","car","pizza","school","doritos","phone","table","book","fish","cat","dog","apple","orange","laptop","lion","monkey","car","pizza","school","doritos","phone","table","book","fish"};
 
-//     next_permutation(begin(textOfButtons), end());
     int randomNumber = QRandomGenerator::global()->generate() % 50;
     qInfo() << randomNumber;
     for(int i = 0 ; i < randomNumber; i++){
@@ -33,24 +31,22 @@ int main(int argc, char* argv[]){
     int count = 0;
     for(int row = 0; row < 5; row++){
         for(int col = 0; col < 6; col++){
-//            int colorCode = rand()%3;
             QString color = "#ccffff";
-//            if(colorCode == 0) color = "red";
-//            else if(colorCode == 1) color = "blue";
-//            else color = "green";
 
             ColorButton *randButton = new ColorButton("#ccffff","?",textOfButtons[count++]);
             QObject::connect(randButton, SIGNAL(clicked()),randButton, SLOT(changeText()));
             QObject::connect(randButton, SIGNAL(clicked()),topLayout->scoreOfPLayer, SLOT(checkScore()));
 
-            topLayout->gl->addWidget(randButton,row,col,1,1);
+            gl->addWidget(randButton,row,col,1,1);
         }
     }
 \
-    hb->addWidget(mt.label);
-    hb->addWidget(topLayout->scoreOfPLayer->scoreLabel);
-    vb->addLayout(hb);
-    vb->addLayout(topLayout->gl);
+    topLayout->addWidget(topLayout->mt.label);
+    topLayout->addWidget(topLayout->scoreOfPLayer->scoreLabel);
+    topLayout->addWidget(topLayout->newGame);
+    topLayout->addWidget(topLayout->quit);
+    vb->addLayout(topLayout);
+    vb->addLayout(gl);
 
     QSpacerItem *si = new QSpacerItem(0,10,QSizePolicy::Expanding,QSizePolicy::Expanding);
 
