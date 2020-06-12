@@ -1,17 +1,19 @@
 #include "colorbutton.h"
 #include<QDebug>
 #include <QTimer>
+
+
 void changePalColor(QPalette & pal, const QString & color);
 void updateWindow(QPalette & pal);
 QTimer *timer;
-ColorButton::ColorButton(const QString & text,QString textOfButton, QWidget * parent)
+ColorButton::ColorButton(const QString & color, const QString & text,QString textOfButton, QWidget * parent)
     : QPushButton(text,parent) {
 
     this->textOfButton = textOfButton;
-
+    this->color = color;
 
     QPalette pal = palette();
-//    changePalColor(pal,color);
+    changePalColor(pal,color);
     updateWindow(pal);
 
 
@@ -21,6 +23,8 @@ ColorButton::ColorButton(const QString & text,QString textOfButton, QWidget * pa
 QString ColorButton::prevText = "";
 QPushButton * ColorButton::prevButton = nullptr;
 QPushButton * ColorButton::currentButton = nullptr;
+bool ColorButton::isScored = false;
+
 void ColorButton::changeText(){
     if(this->text() != "?") return;
     if(timer != nullptr) {
@@ -38,6 +42,7 @@ void ColorButton::changeText(){
             prevText = "";
             prevButton = nullptr;
             currentButton = this;
+            isScored = true;
         }else{
             currentButton = this;
             timer = new QTimer();
@@ -60,17 +65,12 @@ void ColorButton::clearText(){
     timer = nullptr;
 }
 
-//void ColorButton::changePalColor(QPalette & pal, const QString & color){
+void ColorButton::changePalColor(QPalette & pal, const QString & color){
 
-//    if(color == "blue"){
-//        pal.setColor(QPalette::Button, QColor(Qt::blue));
-//    }else if(color == "red"){
-//        pal.setColor(QPalette::Button,QColor(Qt::green));
-//    }else{
-//        pal.setColor(QPalette::Button,QColor(Qt::green));
-//    }
-//    updateWindow(pal);
-//}
+    pal.setColor(QPalette::Button, QColor(color));
+
+    updateWindow(pal);
+}
 
 void ColorButton::updateWindow(QPalette & pal){
     setFlat(true);

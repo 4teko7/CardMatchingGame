@@ -2,10 +2,14 @@
 
 score::score() : QLabel()
 {
-this->scoreNumber = 0;
 this->scoreLabel = new QLabel("Score: 0");
 }
+int score::scoreNumber = 0;
 
-void score::changeScore(){
-    this->scoreLabel->setText("Score: " + QString::number(this->scoreNumber + 1));
+void score::checkScore(){
+    if(ColorButton::isScored){
+        scoreNumber++;
+        this->scoreLabel->setText("Score: " + QString::number(scoreNumber));
+        ColorButton::isScored = false;
+    }
 }

@@ -1,6 +1,7 @@
 #ifndef SCORE_H
 #define SCORE_H
 #include<QLabel>
+#include "colorbutton.h"
 
 class score : public QLabel
 {
@@ -10,10 +11,10 @@ class score : public QLabel
 public:
     score();
     QLabel * scoreLabel;
-    int scoreNumber;
+    static int scoreNumber;
 
 public slots:
-    void changeScore();
+    void checkScore();
 
 };
 

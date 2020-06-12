@@ -35,9 +35,9 @@ int main(int argc, char* argv[]){
 //            else if(colorCode == 1) color = "blue";
 //            else color = "green";
 
-            ColorButton *randButton = new ColorButton("?",textOfButtons[count++]);
+            ColorButton *randButton = new ColorButton("#ccffff","?",textOfButtons[count++]);
             QObject::connect(randButton, SIGNAL(clicked()),randButton, SLOT(changeText()));
-            QObject::connect(randButton, SIGNAL(clicked()),gl, SLOT(checkColors()));
+            QObject::connect(randButton, SIGNAL(clicked()),score, SLOT(checkScore()));
 
             gl->addWidget(randButton,row,col,1,1);
         }
@@ -53,7 +53,7 @@ int main(int argc, char* argv[]){
     vb->addSpacerItem(si);
     cw->setLayout(vb);
     cw->setWindowTitle("Color Game");
-    cw->resize(640,480);
+    cw->resize(800,300);
     cw->show();
     return app.exec();
 
