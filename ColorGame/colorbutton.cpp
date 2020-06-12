@@ -1,8 +1,9 @@
 #include "colorbutton.h"
 #include<QDebug>
+#include <QTimer>
 void changePalColor(QPalette & pal, const QString & color);
 void updateWindow(QPalette & pal);
-
+QTimer *timer;
 ColorButton::ColorButton(const QString & text,QString textOfButton, QWidget * parent)
     : QPushButton(text,parent) {
 
@@ -19,9 +20,14 @@ ColorButton::ColorButton(const QString & text,QString textOfButton, QWidget * pa
 
 QString ColorButton::prevText = "";
 QPushButton * ColorButton::prevButton = nullptr;
+QPushButton * ColorButton::currentButton = nullptr;
 void ColorButton::changeText(){
-
     if(this->text() != "?") return;
+    if(timer != nullptr) {
+        clearText();
+    }
+
+
     if(prevText == "") {
         prevText = this->textOfButton;
         this->setText(this->textOfButton);
@@ -29,28 +35,29 @@ void ColorButton::changeText(){
     }else{
         if(prevText == this->textOfButton){
             this->setText(this->textOfButton);
+            prevText = "";
+            prevButton = nullptr;
+            currentButton = this;
         }else{
-            prevButton->setText("?");
+            currentButton = this;
+            timer = new QTimer();
+            this->setText(this->textOfButton);
+            QObject::connect(timer, SIGNAL(timeout()),this, SLOT(clearText()));
+            timer->start(700);
         }
-        prevText = "";
-        prevButton = nullptr;
+
     }
 
+}
 
-//    QPalette pal = palette();
-//    int color = rand() % 3;
-//    if(color == 0){
-//        this->color = "blue";
-//        changePalColor(pal,this->color);
-//    }else if(color == 1){
-//        this->color = "red";
-//        changePalColor(pal,this->color);
-//    }else{
-//        this->color = "green";
-//        changePalColor(pal,this->color);
-//    }
-
-
+void ColorButton::clearText(){
+    timer->stop();
+    currentButton->setText("?");
+    prevButton->setText("?");
+    prevText = "";
+    prevButton = nullptr;
+    currentButton = nullptr;
+    timer = nullptr;
 }
 
 //void ColorButton::changePalColor(QPalette & pal, const QString & color){
