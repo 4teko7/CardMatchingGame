@@ -1,12 +1,18 @@
 #include "restartgame.h"
-
+#include<QDebug>
 RestartGame::RestartGame()
 {
 
 }
+MyGrid *thisGl;
+TopLayout *thisTopLayout;
 
 using namespace std;
 void RestartGame::restartCurrentGame(MyGrid *gl,TopLayout *topLayout){
+     qInfo() << "HERE IT IS RESTART";
+    thisGl = gl;
+    thisTopLayout = topLayout;
+
     QString textOfButtons[] = {"cat","dog","apple","orange","laptop","lion","monkey","car","pizza","school","doritos","phone","table","book","fish","cat","dog","apple","orange","laptop","lion","monkey","car","pizza","school","doritos","phone","table","book","fish"};
 
     int randomNumber = QRandomGenerator::global()->generate() % 50;
@@ -26,4 +32,11 @@ void RestartGame::restartCurrentGame(MyGrid *gl,TopLayout *topLayout){
             gl->addWidget(randButton,row,col,1,1);
         }
     }
+}
+
+
+
+void RestartGame::restartCurrentGame2(){
+    qInfo() << "HERE IT IS RESTART2";
+    restartCurrentGame(thisGl,thisTopLayout);
 }

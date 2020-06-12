@@ -9,7 +9,7 @@
 #include "score.h"
 #include "toplayout.h"
 #include "restartgame.h"
-
+#include <QWindow>
 
 using namespace std;
 int main(int argc, char* argv[]){
@@ -19,13 +19,16 @@ int main(int argc, char* argv[]){
     QVBoxLayout *vb = new QVBoxLayout();
     QHBoxLayout *hb = new QHBoxLayout();
     MyTimer mt;
-    TopLayout *topLayout = new TopLayout();
-    RestartGame *restartGame = new RestartGame();
+
+    RestartGame * restartGame = new RestartGame();
 
     MyGrid *gl = new MyGrid(mt.timer);
-
+    TopLayout *topLayout = new TopLayout(gl);
     restartGame->restartCurrentGame(gl,topLayout);
+    QObject::connect(topLayout->newGame,SIGNAL(clicked()),restartGame,SLOT(restartCurrentGame2()));
 \
+
+
     topLayout->addWidget(topLayout->mt.label);
     topLayout->addWidget(topLayout->scoreOfPLayer->scoreLabel);
     topLayout->addWidget(topLayout->newGame);

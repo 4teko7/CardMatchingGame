@@ -1,11 +1,16 @@
 #include "toplayout.h"
+#include "restartgame.h"
+
 #include <QApplication>
-TopLayout::TopLayout() : QHBoxLayout()
+//RestartGame *restartGame = new RestartGame();
+TopLayout::TopLayout(MyGrid *gl) : QHBoxLayout()
 {
+
+    MyGrid *thisGl = gl;
     this->scoreOfPLayer = new class score();
     this->newGame = new QPushButton("New Game");
     this->quit = new QPushButton("Quit");
-    QObject::connect(newGame,SIGNAL(clicked()),this,SLOT(this->newGame()));
+
     QObject::connect(quit,SIGNAL(clicked()),qApp,SLOT(quit()));
 }
 

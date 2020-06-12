@@ -6,11 +6,17 @@
 #include <QDebug>
 #include "colorbutton.h"
 
-class RestartGame
+class RestartGame : public QObject
 {
+    Q_OBJECT
+
 public:
     RestartGame();
+
+
+public slots:
     void restartCurrentGame(MyGrid *gl,TopLayout *topLayout);
+    void restartCurrentGame2();
 };
 
 #endif // RESTARTGAME_H
