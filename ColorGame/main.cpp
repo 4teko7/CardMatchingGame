@@ -7,6 +7,8 @@
 #include "mytimer.h"
 #include "mygrid.h"
 #include "score.h"
+#include "toplayout.h"
+
 using namespace std;
 int main(int argc, char* argv[]){
 //#ccffff
@@ -15,8 +17,10 @@ int main(int argc, char* argv[]){
     QVBoxLayout *vb = new QVBoxLayout();
     QHBoxLayout *hb = new QHBoxLayout();
     MyTimer mt;
-    MyGrid *gl = new MyGrid(mt.timer);
-    score *score = new class score();
+    TopLayout *topLayout = new TopLayout();
+
+//    MyGrid *gl = new MyGrid(mt.timer);
+//    score *score = new class score();
 
     QString textOfButtons[] = {"cat","dog","apple","orange","laptop","lion","monkey","car","pizza","school","doritos","phone","table","book","fish","cat","dog","apple","orange","laptop","lion","monkey","car","pizza","school","doritos","phone","table","book","fish"};
 
@@ -37,16 +41,16 @@ int main(int argc, char* argv[]){
 
             ColorButton *randButton = new ColorButton("#ccffff","?",textOfButtons[count++]);
             QObject::connect(randButton, SIGNAL(clicked()),randButton, SLOT(changeText()));
-            QObject::connect(randButton, SIGNAL(clicked()),score, SLOT(checkScore()));
+            QObject::connect(randButton, SIGNAL(clicked()),topLayout->scoreOfPLayer, SLOT(checkScore()));
 
-            gl->addWidget(randButton,row,col,1,1);
+            topLayout->gl->addWidget(randButton,row,col,1,1);
         }
     }
 \
     hb->addWidget(mt.label);
-    hb->addWidget(score->scoreLabel);
+    hb->addWidget(topLayout->scoreOfPLayer->scoreLabel);
     vb->addLayout(hb);
-    vb->addLayout(gl);
+    vb->addLayout(topLayout->gl);
 
     QSpacerItem *si = new QSpacerItem(0,10,QSizePolicy::Expanding,QSizePolicy::Expanding);
 
