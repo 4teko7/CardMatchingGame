@@ -6,12 +6,18 @@ RestartGame::RestartGame()
 }
 MyGrid *thisGl;
 TopLayout *thisTopLayout;
-
 using namespace std;
 void RestartGame::restartCurrentGame(MyGrid *gl,TopLayout *topLayout){
      qInfo() << "HERE IT IS RESTART";
     thisGl = gl;
     thisTopLayout = topLayout;
+
+    topLayout->mt.counter = 0;
+    topLayout->mt.label->setText("Time (secs): 0");
+
+    topLayout->scoreOfPLayer->scoreNumber = 0;
+    topLayout->scoreOfPLayer->scoreLabel->setText("Score: 0");
+
 
     QString textOfButtons[] = {"cat","dog","apple","orange","laptop","lion","monkey","car","pizza","school","doritos","phone","table","book","fish","cat","dog","apple","orange","laptop","lion","monkey","car","pizza","school","doritos","phone","table","book","fish"};
 

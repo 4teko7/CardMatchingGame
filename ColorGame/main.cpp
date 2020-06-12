@@ -18,13 +18,15 @@ int main(int argc, char* argv[]){
     QWidget *cw = new QWidget;
     QVBoxLayout *vb = new QVBoxLayout();
     QHBoxLayout *hb = new QHBoxLayout();
-    MyTimer mt;
 
     RestartGame * restartGame = new RestartGame();
 
-    MyGrid *gl = new MyGrid(mt.timer);
+    MyGrid *gl = new MyGrid();
     TopLayout *topLayout = new TopLayout(gl);
+
+
     restartGame->restartCurrentGame(gl,topLayout);
+
     QObject::connect(topLayout->newGame,SIGNAL(clicked()),restartGame,SLOT(restartCurrentGame2()));
 \
 

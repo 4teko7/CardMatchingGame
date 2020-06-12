@@ -1,9 +1,9 @@
 #include "mygrid.h"
 #include<colorbutton.h>
 
-MyGrid::MyGrid(QTimer * timer) : QGridLayout()
+MyGrid::MyGrid() : QGridLayout()
 {
-    this->timer = timer;
+
 }
 
 

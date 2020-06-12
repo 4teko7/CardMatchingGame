@@ -7,6 +7,7 @@ TopLayout::TopLayout(MyGrid *gl) : QHBoxLayout()
 {
 
     MyGrid *thisGl = gl;
+    thisGl->timer = this->mt.timer;
     this->scoreOfPLayer = new class score();
     this->newGame = new QPushButton("New Game");
     this->quit = new QPushButton("Quit");
