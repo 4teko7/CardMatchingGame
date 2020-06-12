@@ -8,6 +8,9 @@ MyTimer::MyTimer()
 
     timer = new QTimer(this);
     label = new QLabel("Time (secs): 0");
+    label->setStyleSheet("QLabel { background-color : white; color : black; }");
+
+
     counter = 0;
 
     // Signal And Slot Connection

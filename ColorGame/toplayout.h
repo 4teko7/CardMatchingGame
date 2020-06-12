@@ -7,7 +7,7 @@
 #include "mytimer.h"
 
 
-class TopLayout : public QHBoxLayout
+class TopLayout : public QGridLayout
 {
     Q_OBJECT
 
@@ -15,8 +15,8 @@ public:
     TopLayout(MyGrid *gl);
     score *scoreOfPLayer;
     MyTimer mt;
-    QPushButton *newGame;
-    QPushButton *quit;
+    ColorButton *newGame;
+    ColorButton *quit;
     MyGrid *thisGl;
 
 };

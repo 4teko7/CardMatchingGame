@@ -3,14 +3,14 @@
 
 #include <QApplication>
 //RestartGame *restartGame = new RestartGame();
-TopLayout::TopLayout(MyGrid *gl) : QHBoxLayout()
+TopLayout::TopLayout(MyGrid *gl) : QGridLayout()
 {
 
     MyGrid *thisGl = gl;
     thisGl->timer = this->mt.timer;
     this->scoreOfPLayer = new class score();
-    this->newGame = new QPushButton("New Game");
-    this->quit = new QPushButton("Quit");
+    this->newGame = new ColorButton("#ccffff","New Game", "");
+    this->quit = new ColorButton("#ccffff","Quit", "");
 
     QObject::connect(quit,SIGNAL(clicked()),qApp,SLOT(quit()));
 }
