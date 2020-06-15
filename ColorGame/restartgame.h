@@ -17,6 +17,7 @@ public:
 public slots:
     void restartCurrentGame(MyGrid *gl,TopLayout *topLayout);
     void restartCurrentGame2();
+    void isFinished();
 };
 
 #endif // RESTARTGAME_H

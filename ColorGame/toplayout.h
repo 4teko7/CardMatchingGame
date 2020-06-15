@@ -1,10 +1,8 @@
 #ifndef TOPLAYOUT_H
 #define TOPLAYOUT_H
-
+#include "mytimer.h"
 #include "score.h"
 #include <QHBoxLayout>
-#include "mygrid.h"
-#include "mytimer.h"
 
 
 class TopLayout : public QGridLayout
@@ -12,12 +10,12 @@ class TopLayout : public QGridLayout
     Q_OBJECT
 
 public:
-    TopLayout(MyGrid *gl);
+    TopLayout(MyTimer * mt);
+//    void checkScore();
     score *scoreOfPLayer;
-    MyTimer mt;
     ColorButton *newGame;
     ColorButton *quit;
-    MyGrid *thisGl;
+    MyTimer * mt;
 
 };
 

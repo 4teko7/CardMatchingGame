@@ -19,11 +19,12 @@ int main(int argc, char* argv[]){
     QMainWindow *mw = new QMainWindow;
     QVBoxLayout *vb = new QVBoxLayout();
     QHBoxLayout *hb = new QHBoxLayout();
+    MyTimer *mt = new MyTimer();
 
     RestartGame * restartGame = new RestartGame();
 
     MyGrid *gl = new MyGrid();
-    TopLayout *topLayout = new TopLayout(gl);
+    TopLayout *topLayout = new TopLayout(mt);
 
 
     restartGame->restartCurrentGame(gl,topLayout);
@@ -32,7 +33,7 @@ int main(int argc, char* argv[]){
 \
 //gl->addWidget(randButton,row,col,1,1);
 
-    topLayout->addWidget(topLayout->mt.label,0,0,1,1);
+    topLayout->addWidget(topLayout->mt->label,0,0,1,1);
     topLayout->addWidget(topLayout->scoreOfPLayer->scoreLabel,0,1,1,1);
     topLayout->addWidget(new QLabel(""),0,2,1,1);
     topLayout->addWidget(new QLabel(""),0,3,1,1);

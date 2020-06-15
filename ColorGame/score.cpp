@@ -1,5 +1,5 @@
 #include "score.h"
-
+#include<QDebug>
 score::score() : QLabel()
 {
 this->scoreLabel = new QLabel("Score: 0");

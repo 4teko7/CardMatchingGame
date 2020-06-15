@@ -1,8 +1,11 @@
 #ifndef COLORBUTTON_H
 #define COLORBUTTON_H
+#include "mytimer.h"
 #include<QPushButton>
 #include<QPalette>
 #include "score.h"
+
+
 class ColorButton : public QPushButton
 {
     Q_OBJECT
@@ -22,6 +25,7 @@ public:
 public slots:
    void changeText();
    void clearText();
+   void clearFound();
 
 
 };
