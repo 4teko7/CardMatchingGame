@@ -2,16 +2,16 @@
 #include<QTimer>
 #include<QMessageBox>
 
-
+//Timer Constructor
 MyTimer::MyTimer()
 {
 
-    timer = new QTimer(this);
-    label = new QLabel("Time (secs): 0");
+    timer = new QTimer(this);//Timer Of Player
+    label = new QLabel("Time (secs): 0");// Timer Label Will Be Shown
     label->setStyleSheet("QLabel { background-color : white; color : black; }");
 
 
-    counter = 0;
+    counter = 0;//Keeps Seconds
 
     // Signal And Slot Connection
 
@@ -23,12 +23,12 @@ MyTimer::MyTimer()
 
 }
 
-
+ // Change timer counter according to timeout() signal
 void MyTimer::myTimerSlot() {
 
     counter += 1;
     label->setText("Time (secs): " + QString::number(this->counter));
-    if(counter >= 9990){
+    if(counter >= 180){
         this->timer->stop();
         QMessageBox *msgBox = new QMessageBox();
         msgBox->setText("You Failed!");

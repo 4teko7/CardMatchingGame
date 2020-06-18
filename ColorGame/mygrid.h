@@ -10,8 +10,8 @@ class MyGrid : public QGridLayout
     Q_OBJECT
 
 public:
-    MyGrid();
-    QTimer * timer;
+    MyGrid(); //Constructor
+    QTimer * timer; //Timer Object
 
 
 public slots:

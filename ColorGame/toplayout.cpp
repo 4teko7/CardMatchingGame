@@ -4,29 +4,15 @@
 #include<QLabel>
 #include <QDebug>
 //RestartGame *restartGame = new RestartGame();
+
+ //Constructor : Take a timer object: timer of player
 TopLayout::TopLayout(MyTimer * mt) : QGridLayout()
 {
-    this->scoreOfPLayer = new class score();
-    this->newGame = new ColorButton("#ccffff","New Game", "");
-    this->quit = new ColorButton("#ccffff","Quit", "");
-    this->mt = mt;
+    this->scoreOfPLayer = new class score();   //Score of player
+    this->newGame = new ColorButton("#ccffff","New Game", "");   //New Game Button
+    this->quit = new ColorButton("#ccffff","Quit", "");   //Quit Button
+    this->mt = mt;   // Timer of player
     QObject::connect(quit,SIGNAL(clicked()),qApp,SLOT(quit()));
 }
 
 
-//void TopLayout::checkScore(QLabel * ab){
-//    qInfo() << "HERE IT IS @";
-//    if(ColorButton::isScored){
-
-//        this->scoreOfPLayer->scoreNumber++;
-//        this->scoreOfPLayer->scoreLabel->setText("Score: 1");
-//        ColorButton::isScored = false;
-//    }
-//}
-
-
-//score *score;
-//MyTimer mt;
-//MyGrid *gl;
-//QPushButton *newGame;
-//QPushButton *quit;

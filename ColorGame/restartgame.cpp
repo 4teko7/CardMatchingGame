@@ -1,5 +1,7 @@
 #include "restartgame.h"
 #include<QDebug>
+
+//Constructor
 RestartGame::RestartGame()
 {
 
@@ -7,8 +9,8 @@ RestartGame::RestartGame()
 MyGrid *thisGl;
 TopLayout *thisTopLayout;
 using namespace std;
-void RestartGame::restartCurrentGame(MyGrid *gl,TopLayout *topLayout){
-     qInfo() << "HERE IT IS RESTART";
+void RestartGame::restartCurrentGame(MyGrid *gl,TopLayout *topLayout){  //Restart Game when 'New Game' Button is clicked
+
     thisGl = gl;
     thisTopLayout = topLayout;
 
@@ -22,10 +24,11 @@ void RestartGame::restartCurrentGame(MyGrid *gl,TopLayout *topLayout){
     QLabel * ab = new QLabel();
     ab->setText("LABELLL");
 
+    //Some Text for buttons
     QString textOfButtons[] = {"cat","dog","apple","orange","laptop","lion","monkey","car","pizza","school","doritos","phone","table","book","fish","cat","dog","apple","orange","laptop","lion","monkey","car","pizza","school","doritos","phone","table","book","fish"};
 
     int randomNumber = QRandomGenerator::global()->generate() % 50;
-    qInfo() << randomNumber;
+    //Changing order of words in every new game
     for(int i = 0 ; i < randomNumber; i++){
         random_shuffle(std::begin(textOfButtons), std::end(textOfButtons));
     }
@@ -34,6 +37,7 @@ void RestartGame::restartCurrentGame(MyGrid *gl,TopLayout *topLayout){
         for(int col = 0; col < 6; col++){
             QString color = "#ccffff";
 
+            // Creating Buttons and Connect Them to Necessary Signals
             ColorButton *randButton = new ColorButton("#ccffff","?",textOfButtons[count++]);
             QObject::connect(randButton, SIGNAL(clicked()),randButton, SLOT(changeText()));
             QObject::connect(randButton, SIGNAL(clicked()),topLayout->scoreOfPLayer, SLOT(checkScore()));
@@ -45,14 +49,14 @@ void RestartGame::restartCurrentGame(MyGrid *gl,TopLayout *topLayout){
 }
 
 
-
+//call original restartCurrentGame method with parameters
 void RestartGame::restartCurrentGame2(){
-    qInfo() << "HERE IT IS RESTART2";
+
     restartCurrentGame(thisGl,thisTopLayout);
 }
-
+ //Check if game finished
 void RestartGame::isFinished(){
-    qInfo() << thisTopLayout->scoreOfPLayer->scoreNumber;
+
     if(thisTopLayout->scoreOfPLayer->scoreNumber == 15){
         thisTopLayout->mt->timer->stop();
         QMessageBox *msgBox = new QMessageBox();

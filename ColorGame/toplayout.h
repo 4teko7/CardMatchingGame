@@ -10,12 +10,12 @@ class TopLayout : public QGridLayout
     Q_OBJECT
 
 public:
-    TopLayout(MyTimer * mt);
+    TopLayout(MyTimer * mt); //Constructor : Take a timer object: timer of player
 //    void checkScore();
-    score *scoreOfPLayer;
-    ColorButton *newGame;
-    ColorButton *quit;
-    MyTimer * mt;
+    score *scoreOfPLayer; //Score of player
+    ColorButton *newGame; //New Game Button
+    ColorButton *quit; //Quit Button
+    MyTimer * mt; // Timer of player
 
 };
 

@@ -9,12 +9,12 @@ class score : public QLabel
     Q_OBJECT
 
 public:
-    score();
-    QLabel * scoreLabel;
-    static int scoreNumber;
+    score(); //Constructor
+    QLabel * scoreLabel; //Score of player
+    static int scoreNumber; // Score number will go inside scoreLabel
 
 public slots:
-    void checkScore();
+    void checkScore(); //If two buttons matches, then score is incremented
 
 };
 
