@@ -33,12 +33,13 @@ void RestartGame::restartCurrentGame(MyGrid *gl,TopLayout *topLayout){  //Restar
         random_shuffle(std::begin(textOfButtons), std::end(textOfButtons));
     }
     int count = 0;
+    ColorButton *randButton;
     for(int row = 0; row < 5; row++){
         for(int col = 0; col < 6; col++){
             QString color = "#ccffff";
 
             // Creating Buttons and Connect Them to Necessary Signals
-            ColorButton *randButton = new ColorButton("#ccffff","?",textOfButtons[count++]);
+            randButton = new ColorButton("#ccffff","?",textOfButtons[count++]);
             QObject::connect(randButton, SIGNAL(clicked()),randButton, SLOT(changeText()));
             QObject::connect(randButton, SIGNAL(clicked()),topLayout->scoreOfPLayer, SLOT(checkScore()));
             QObject::connect(randButton, SIGNAL(clicked()),this, SLOT(isFinished()));
@@ -46,6 +47,7 @@ void RestartGame::restartCurrentGame(MyGrid *gl,TopLayout *topLayout){  //Restar
             gl->addWidget(randButton,row,col,1,1);
         }
     }
+    randButton->setNecessaryVariables();
 }
 
 

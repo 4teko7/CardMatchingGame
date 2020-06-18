@@ -26,6 +26,7 @@ public slots:
    void changeText(); //Change text of clicked Buttons
    void clearText(); // put '?' in not mached buttons
    void clearFound(); // clear text of matched buttons
+   void setNecessaryVariables(); //Sets Some Variables After Restarting Game
 
 
 };

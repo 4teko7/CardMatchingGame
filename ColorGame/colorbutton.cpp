@@ -83,6 +83,18 @@ void ColorButton::clearText(){
     currentButton = nullptr;
     timer = nullptr;
 }
+
+//Sets Some Variables After Restarting Game
+void ColorButton::setNecessaryVariables(){
+    timer = nullptr;
+    timer2 = nullptr;
+    ColorButton::prevText = "";
+    ColorButton::prevButton = nullptr;
+    ColorButton::currentButton = nullptr;
+    ColorButton::isScored = false;
+    sameFound = false;
+}
+
 //Change Color
 void ColorButton::changePalColor(QPalette & pal, const QString & color){
 
